@@ -1,8 +1,10 @@
-fetch("games/ml.json")
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-  })
-  .catch(error => {
-    console.error("Error loading game:", error);
-  });
+{
+  "name": "Mobile Legends",
+  "lanes": {
+    "exp": ["Alucard"],
+    "mid": ["Gusion"],
+    "jungler": ["Alucard"],
+    "gold": ["Layla"],
+    "roam": ["Gusion"]
+  }
+}
