@@ -1,1 +1,9 @@
-
+{
+  "title": "Mobile Legends",
+  "description": "Select a hero to see their guide.",
+  "heroes": [
+    {"name": "Alucard", "file": "Alucard.html"},
+    {"name": "Layla", "file": "Layla.html"},
+    {"name": "Gusion", "file": "Gusion.html"}
+  ]
+}
