@@ -1,8 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Legends Heroes</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  #role-buttons button { margin: 5px; padding: 10px; }
+  #hero-list li { margin: 5px 0; }
+</style>
+</head>
+<body>
+
 <h1>Mobile Legends</h1>
 <p>Select a hero to see their guide.</p>
 
 <!-- Role Buttons -->
 <div id="role-buttons">
+  <button onclick="filterHeroes('All')">All</button>
   <button onclick="filterHeroes('Assassin')">Assassin</button>
   <button onclick="filterHeroes('Marksman')">Marksman</button>
   <button onclick="filterHeroes('Mage')">Mage</button>
@@ -12,36 +27,47 @@
 </div>
 
 <!-- Hero List -->
-<ul id="hero-list">
-  <!-- Heroes will be populated from JSON -->
-</ul>
+<ul id="hero-list"></ul>
 
 <script>
+// Hero data (your JSON-like array)
 const heroes = [
   {name: "Alucard", file: "Alucard.html", role: "Assassin"},
-  {name: "Layla", file: "Layla.html", role: "Marksman"}
+  {name: "Layla", file: "Layla.html", role: "Marksman"},
+  {name: "Eudora", file: "Eudora.html", role: "Mage"},
+  {name: "Tigreal", file: "Tigreal.html", role: "Tank"},
+  {name: "Akai", file: "Akai.html", role: "Roamer"},
+  {name: "Rafaela", file: "Rafaela.html", role: "Support"},
+  {name: "Gusion", file: "Gusion.html", role: "Assassin"},
+  {name: "Moskov", file: "Moskov.html", role: "Marksman"},
+  {name: "Lunox", file: "Lunox.html", role: "Mage"},
+  {name: "Johnson", file: "Johnson.html", role: "Tank"}
 ];
 
-function displayHeroes(filteredHeroes) {
-  const list = document.getElementById('hero-list');
-  list.innerHTML = '';
-  filteredHeroes.forEach(hero => {
+// Function to display heroes
+function displayHeroes(list) {
+  const heroList = document.getElementById('hero-list');
+  heroList.innerHTML = '';
+  list.forEach(hero => {
     const li = document.createElement('li');
-    li.innerHTML = `<a href="${hero.file}">${hero.name}</a>`;
-    li.dataset.role = hero.role;
-    list.appendChild(li);
+    li.innerHTML = `<a href="${hero.file}">${hero.name} (${hero.role})</a>`;
+    heroList.appendChild(li);
   });
 }
 
-// Initially show all heroes
+// Initial display: show all heroes
 displayHeroes(heroes);
 
+// Filter heroes by role
 function filterHeroes(role) {
   if (role === 'All') {
     displayHeroes(heroes);
   } else {
-    const filtered = heroes.filter(h => h.role === role);
+    const filtered = heroes.filter(hero => hero.role === role);
     displayHeroes(filtered);
   }
 }
 </script>
+
+</body>
+</html>
