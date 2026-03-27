@@ -1,1 +1,47 @@
+<h1>Mobile Legends</h1>
+<p>Select a hero to see their guide.</p>
 
+<!-- Role Buttons -->
+<div id="role-buttons">
+  <button onclick="filterHeroes('Assassin')">Assassin</button>
+  <button onclick="filterHeroes('Marksman')">Marksman</button>
+  <button onclick="filterHeroes('Mage')">Mage</button>
+  <button onclick="filterHeroes('Tank')">Tank</button>
+  <button onclick="filterHeroes('Roamer')">Roamer</button>
+  <button onclick="filterHeroes('Support')">Support</button>
+</div>
+
+<!-- Hero List -->
+<ul id="hero-list">
+  <!-- Heroes will be populated from JSON -->
+</ul>
+
+<script>
+const heroes = [
+  {name: "Alucard", file: "Alucard.html", role: "Assassin"},
+  {name: "Layla", file: "Layla.html", role: "Marksman"}
+];
+
+function displayHeroes(filteredHeroes) {
+  const list = document.getElementById('hero-list');
+  list.innerHTML = '';
+  filteredHeroes.forEach(hero => {
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${hero.file}">${hero.name}</a>`;
+    li.dataset.role = hero.role;
+    list.appendChild(li);
+  });
+}
+
+// Initially show all heroes
+displayHeroes(heroes);
+
+function filterHeroes(role) {
+  if (role === 'All') {
+    displayHeroes(heroes);
+  } else {
+    const filtered = heroes.filter(h => h.role === role);
+    displayHeroes(filtered);
+  }
+}
+</script>
