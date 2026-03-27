@@ -2,70 +2,63 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobile Legends Heroes</title>
+<title>Game UI</title>
 <style>
-  body { font-family: Arial, sans-serif; padding: 20px; }
-  #role-buttons button { margin: 5px; padding: 10px; }
-  #hero-list li { margin: 5px 0; }
+    body {
+        background-color: #0d1117;
+        color: white;
+        font-family: Arial;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        margin: 5px;
+        background-color: #2f3337;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #444;
+    }
+
+    .lane-container {
+        margin-top: 10px;
+        display: none; /* hidden muna */
+    }
+
+    .box {
+        border: 1px solid #555;
+        padding: 20px;
+        margin-top: 15px;
+    }
 </style>
 </head>
 <body>
 
-<h1>Mobile Legends</h1>
-<p>Select a hero to see their guide.</p>
+<!-- MAIN BUTTON -->
+<button class="btn" onclick="toggleLane()">Mobile Legends</button>
+<button class="btn">Honor of Kings</button>
 
-<!-- Role Buttons -->
-<div id="role-buttons">
-  <button onclick="filterHeroes('All')">All</button>
-  <button onclick="filterHeroes('Assassin')">Assassin</button>
-  <button onclick="filterHeroes('Marksman')">Marksman</button>
-  <button onclick="filterHeroes('Mage')">Mage</button>
-  <button onclick="filterHeroes('Tank')">Tank</button>
-  <button onclick="filterHeroes('Roamer')">Roamer</button>
-  <button onclick="filterHeroes('Support')">Support</button>
+<!-- LANE BUTTONS -->
+<div id="lanes" class="lane-container">
+    <button class="btn">EXP Lane</button>
+    <button class="btn">Mid Lane</button>
+    <button class="btn">Jungler</button>
+    <button class="btn">Gold Lane</button>
+    <button class="btn">Roam</button>
 </div>
 
-<!-- Hero List -->
-<ul id="hero-list"></ul>
+<!-- ERROR BOX -->
+<div class="box">
+    Error loading game: Game data not found
+</div>
 
 <script>
-// Hero data (your JSON-like array)
-const heroes = [
-  {name: "Alucard", file: "Alucard.html", role: "Assassin"},
-  {name: "Layla", file: "Layla.html", role: "Marksman"},
-  {name: "Eudora", file: "Eudora.html", role: "Mage"},
-  {name: "Tigreal", file: "Tigreal.html", role: "Tank"},
-  {name: "Akai", file: "Akai.html", role: "Roamer"},
-  {name: "Rafaela", file: "Rafaela.html", role: "Support"},
-  {name: "Gusion", file: "Gusion.html", role: "Assassin"},
-  {name: "Moskov", file: "Moskov.html", role: "Marksman"},
-  {name: "Lunox", file: "Lunox.html", role: "Mage"},
-  {name: "Johnson", file: "Johnson.html", role: "Tank"}
-];
-
-// Function to display heroes
-function displayHeroes(list) {
-  const heroList = document.getElementById('hero-list');
-  heroList.innerHTML = '';
-  list.forEach(hero => {
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="${hero.file}">${hero.name} (${hero.role})</a>`;
-    heroList.appendChild(li);
-  });
-}
-
-// Initial display: show all heroes
-displayHeroes(heroes);
-
-// Filter heroes by role
-function filterHeroes(role) {
-  if (role === 'All') {
-    displayHeroes(heroes);
-  } else {
-    const filtered = heroes.filter(hero => hero.role === role);
-    displayHeroes(filtered);
-  }
+function toggleLane() {
+    const lanes = document.getElementById("lanes");
+    lanes.style.display = lanes.style.display === "none" ? "block" : "none";
 }
 </script>
 
