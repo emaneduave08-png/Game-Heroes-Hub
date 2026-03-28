@@ -24,3 +24,23 @@ function searchHOK() {
     showHOKHero();
   }
 }
+const mlHeroes = [
+  {
+    name: "Alucard",
+    role: "Fighter",
+    info: "Lifesteal hero, strong in 1v1.",
+    id: "alucard"
+  },
+  {
+    name: "Miya",
+    role: "Marksman",
+    info: "Fast attack speed, strong late game.",
+    id: "miya"
+  },
+  {
+    name: "Layla",
+    role: "Marksman",
+    info: "Long range damage dealer.",
+    id: "layla"
+  }
+];
