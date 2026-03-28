@@ -44,3 +44,33 @@ const mlHeroes = [
     id: "layla"
   }
 ];
+function searchHero() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let suggestions = document.getElementById("suggestions");
+
+  suggestions.innerHTML = "";
+
+  mlHeroes.forEach(hero => {
+    if (hero.name.toLowerCase().includes(input) && input !== "") {
+      suggestions.innerHTML += `
+        <p onclick="openHero('${hero.id}')">
+          ${hero.name}
+        </p>
+      `;
+    }
+  });
+}
+function showHeroPage() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const heroId = urlParams.get("hero");
+
+  const hero = mlHeroes.find(h => h.id === heroId);
+
+  if (hero) {
+    document.getElementById("heroInfo").innerHTML = `
+      <h2>${hero.name}</h2>
+      <p><b>Role:</b> ${hero.role}</p>
+      <p>${hero.info}</p>
+    `;
+  }
+}
