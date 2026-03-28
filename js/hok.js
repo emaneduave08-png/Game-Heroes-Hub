@@ -22,7 +22,7 @@ searchBar.addEventListener("input", function() {
       li.textContent = hero;
 
       li.addEventListener("click", function() {
-        window.location.href = "heroes/" + hero.replace(" ", "").toLowerCase() + ".html";
+        window.location.href = "hok-hero.html" + hero.replace(" ", "").toLowerCase() + ".html";
       });
 
       suggestions.appendChild(li);
