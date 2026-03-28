@@ -1,4 +1,4 @@
-const hokHeroes = [...]
+const hokHeroes = [
   {
     name: "Lu Bu",
     role: "Fighter",
@@ -8,12 +8,19 @@ const hokHeroes = [...]
   {
     name: "Diao Chan",
     role: "Mage",
-    info: "Has freeze and slow skills.",
+    info: "Has freeze and control abilities.",
     id: "diaochan"
+  },
+  {
+    name: "Zhao Yun",
+    role: "Assassin/Fighter",
+    info: "High mobility and burst damage.",
+    id: "zhaoyun"
   }
 ];
 
-// 🔎 SEARCH
+
+// 🔎 SEARCH FUNCTION
 function searchHOKHero() {
   let input = document.getElementById("search").value.toLowerCase();
   let suggestions = document.getElementById("suggestions");
@@ -23,18 +30,22 @@ function searchHOKHero() {
   hokHeroes.forEach(hero => {
     if (hero.name.toLowerCase().includes(input) && input !== "") {
       suggestions.innerHTML += `
-        <p onclick="openHOKHero('${hero.id}')">${hero.name}</p>
+        <p onclick="openHOKHero('${hero.id}')">
+          ${hero.name}
+        </p>
       `;
     }
   });
 }
 
-// 👉 REDIRECT
+
+// 👉 CLICK HERO → GO TO PROFILE PAGE
 function openHOKHero(heroId) {
-  window.location.href = "hoK.html?hero=" + heroId;
+  window.location.href = "hok-hero.html?hero=" + heroId;
 }
 
-// 📄 LOAD PROFILE
+
+// 📄 LOAD HERO PROFILE PAGE
 function showHOKHeroPage() {
   const urlParams = new URLSearchParams(window.location.search);
   const heroId = urlParams.get("hero");
