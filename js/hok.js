@@ -31,7 +31,7 @@ function searchHOKHero() {
 
 // 👉 REDIRECT
 function openHOKHero(heroId) {
-  window.location.href = "hok-hero.html?hero=" + heroId;
+  window.location.href = "hoK.html?hero=" + heroId;
 }
 
 // 📄 LOAD PROFILE
